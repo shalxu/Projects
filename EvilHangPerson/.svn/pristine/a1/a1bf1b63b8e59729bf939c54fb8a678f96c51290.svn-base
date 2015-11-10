@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+public class HangPerson 
+{
+	private String word;
+	private String progress;
+	private int guessCount;
+	private int maxGuess;
+	
+	public HangPerson(String w, int mg)
+	{
+		word = w.toLowerCase();
+		maxGuess = mg;
+		
+		//initialize progress word
+		progress = "";
+		for(int i=0; i < w.length(); i++)
+		{
+			progress += "*";
+		}
+		
+		guessCount = 0;
+		
+	}
+	
+	//setters and getters
+	String getProgress()
+	{
+		return progress;
+	}
+	
+	int getGuessCount()
+	{
+		return guessCount;
+	}
+
+	int getMaxGuess()
+	{
+		return maxGuess;
+	}
+	
+	String getWord()
+	{
+		return word;
+	}
+	void guessChar()
+	{
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Guess a letter");
+		char c = input.next().charAt(0);
+		
+		//process the character
+
+		//check if the letter has already been guessed
+		for(int i=0; i < progress.length(); i++)
+		{
+			//if this letter equals c 
+			if( progress.charAt(i) == c)
+			{
+				System.out.println("You have already guessed: " + c);
+				return;
+			}
+		}
+		
+		//Determine if the letter guessed is correct
+		for(int i=0; i < word.length(); i++)
+		{
+			if(word.charAt(i) == c)
+			{
+				//change the character at i to c (the letter they guessed)
+				progress = progress.substring(0, i) + c + progress.substring(i+1, progress.length());
+			}
+		}
+		guessCount++;
+	}
+	
+	boolean winCodition()
+	{
+		//One way
+		/*
+		for(int i=0; i < progress.length(); i++)
+		{
+			if(progress.charAt(i) == '*')
+			{
+				return false;
+			}
+		}
+		return true;
+		*/
+		
+		//Another way
+		return progress.equals(word);
+	}
+	
+	
+}

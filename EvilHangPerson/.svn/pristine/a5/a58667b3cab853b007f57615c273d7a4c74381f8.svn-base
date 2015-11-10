@@ -1,0 +1,32 @@
+
+public class HangPersonDriver 
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to HangPerson 1.0");
+		
+		String wordToGuess = "Tree";
+		HangPerson theGame = new HangPerson(wordToGuess, wordToGuess.length()+5);
+		
+		System.out.println("Word: " + theGame.getProgress());
+		
+		while( !theGame.winCodition() && theGame.getGuessCount() < theGame.getMaxGuess()) //add the lose condition here TODO
+		{						
+			theGame.guessChar();
+			System.out.println("Word: " + theGame.getProgress() + " You have " + (theGame.getMaxGuess() - theGame.getGuessCount())  + " guesses remaining");
+		}
+		
+		if( theGame.winCodition())
+		{
+			System.out.println("You win!");
+		}
+		
+		else
+		{
+			System.out.println("You lost! The word was: " + theGame.getWord());
+		}
+		
+		
+	}
+
+}

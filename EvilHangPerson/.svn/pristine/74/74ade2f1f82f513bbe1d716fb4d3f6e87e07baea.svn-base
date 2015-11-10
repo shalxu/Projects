@@ -1,0 +1,49 @@
+import java.io.File;
+import java.util.Scanner;
+import java.util.Hashtable;
+import java.util.Set;
+
+
+public class EvilHangPersonController 
+{
+	Hashtable<Character,Set> [] words;
+	
+	
+	protected EvilHangPersonController()
+	{
+		Scanner dictionary=null;
+		try
+		{
+			dictionary=new Scanner(new File("CompleteDictionary.txt"));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		words=new Hashtable[30];
+		for(int i=0;i<30;i++)
+		{
+			words[i]=new Hashtable(26,1);
+			for(char c='a';c<'z';c++)
+			{
+				words[i].put(new Character(c),new Set<String>);
+			}
+		}
+		
+		while(dictionary.hasNextLine())
+		{
+			String temp=dictionary.nextLine();
+			for(char c='a';c<'z';c++)
+			{
+				if(!temp.contains(c))
+				words[temp.length()].get(c)
+			}
+		}
+		
+	}
+	public static void main(String[] args)
+	{
+		
+	}
+}

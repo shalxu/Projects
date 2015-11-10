@@ -1,0 +1,66 @@
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Hashtable;
+
+public class EvilHangPersonController 
+{
+	Hashtable<Character,ArrayList<String>> [] words;
+	
+	
+	protected EvilHangPersonController()
+	{
+		Scanner dictionary=null;
+		try
+		{
+			dictionary=new Scanner(new File("CompleteDictionary.txt"));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		words=new Hashtable[30];
+		for(int i=0;i<30;i++)
+		{
+			words[i]=new Hashtable(30,1);
+			for(char c='a';c<='z';c++)
+			{
+				words[i].put(new Character(c),new ArrayList<String>());
+			}
+		}
+		while(dictionary.hasNextLine())
+		{
+			String temp=dictionary.nextLine();
+			for(char c='a';c<='z';c++)
+			{
+				if(temp.toLowerCase().indexOf(c)==-1)
+				words[temp.length()].get(c).add(temp);
+			}
+		}
+	}
+	protected ArrayList<String> searchWords(ArrayList<String> previousWords,char currentChar, int number)
+	{
+		if(previousWords==null)
+		{
+			return words[number].get(currentChar);
+		}
+		else
+		{
+			ArrayList<String> newWords=new ArrayList<String>();
+			for(String temp:previousWords)
+			{
+				if(words[number].get(currentChar).contains(temp))
+				{
+					newWords.add(temp);
+					System.out.println(temp);
+				}
+			}
+			if(newWords.isEmpty())
+				return null;
+			else
+				return newWords;
+		}
+	}
+}
