@@ -1,0 +1,41 @@
+import java.awt.Image;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+
+public abstract class Plant extends Subject 
+{
+	protected int reloadSpeed;
+	protected int damage;
+	protected ArrayList<Pea> peas;
+	public Plant(int locationY, int locationX)
+	{
+		x=PvZView.gridX+(locationX*PvZView.gridWidth);
+		y=PvZView.gridY+(locationY*PvZView.gridHeight);
+		peas=new ArrayList<Pea>();
+	}
+	protected class Pea extends Subject
+	{
+		protected Pea(int x, int y)
+		{
+			this.x=x;
+			this.y=y;
+			image=new ImageIcon("graphics/pea.png");
+		}
+	}
+	protected abstract void movesPeas();
+	protected abstract void launchPeas();
+	protected  void attack(Zombie z, int damage)
+	{
+		z.attacked(damage);
+	}
+	protected void eaten(int damage) 
+	{
+		this.health-=damage;
+	}
+	protected int getDamage()
+	{
+		return damage;
+	}
+}

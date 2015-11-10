@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.ImageIcon;
+
+public class sunflower extends Plant{
+	private int sunDelay;
+	protected Sun sun;
+	public sunflower(int locationX, int locationY)
+	{
+	super(locationX, locationY);
+	image=new ImageIcon("graphics/sunFlower.gif");
+	damage=0;
+	health=60;
+	sunDelay=0;
+	sun=null;
+	}
+	protected int moveSun()
+	{
+		sunDelay++;
+		if(sunDelay==150)
+			sunDelay=0;
+		if(sunDelay==1)
+		{
+			sun=new Sun(this.x,this.y-10);
+		}
+		if(sunDelay>0&&sunDelay<10)
+		{
+			sun.x=sun.x/(10-sunDelay)*(10-sunDelay-1);
+			sun.y=50+(sun.y-50)/(10-sunDelay)*(10-sunDelay-1);
+		}
+		if(sunDelay==10)
+		{
+			sun=null;
+			return 1;
+		}
+		else
+			return 0;
+	}
+	protected class Sun extends Subject
+	{
+		protected Sun(int x, int y)
+		{
+			this.x=x;
+			this.y=y;
+			image=new ImageIcon("graphics/pea.png");
+		}
+	}
+
+	protected void launchPeas()
+	{
+		return;
+	}
+	@Override
+	protected void movesPeas() 
+	{	
+		return;
+	}
+}

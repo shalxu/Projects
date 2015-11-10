@@ -1,0 +1,21 @@
+import javax.swing.ImageIcon;
+
+public class Walnut extends Plant{
+	public Walnut(int locationX, int locationY)
+	{
+	super(locationX, locationY);
+	image=new ImageIcon("graphics/walnut.jpg");
+	damage=0;
+	health=300;
+	}
+
+	@Override
+	protected void movesPeas() {
+		return;
+	}
+
+	@Override
+	protected void launchPeas() {
+		return;
+	}
+}

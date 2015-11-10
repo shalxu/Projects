@@ -1,0 +1,83 @@
+/**
+ * A Runnable that keeps track of the pace of game in PvZView.
+ * @author Shal Xu & Riley Manifold.
+ *
+ */
+public class Timer implements Runnable{
+	private PvZView view;
+	private int seconds;
+	protected Timer(PvZView view)
+	{
+		this.view=view;
+		seconds=0;
+	}
+	
+	protected int getSeconds()
+	{
+		return seconds;
+	}
+	@Override
+	public void run() {
+		while (true)
+		{
+			seconds++;
+			System.out.println(seconds);
+			if(seconds<=50)
+			{
+				if(seconds%10==9)
+				{
+					int temp=(int)(Math.random()*5);
+					view.zombies[temp].add(new doorZombie(temp));
+				}
+			}
+			else if(seconds<=120)
+			{
+				if(seconds%5==4)
+				{
+				int temp=(int)(Math.random()*5);
+				int zombie=(int)(Math.random()*3);
+				switch(zombie)
+				{
+				case 0:
+					view.zombies[temp].add(new coneZombie(temp));
+					break;
+				case 1:
+					view.zombies[temp].add(new footballZombie(temp));
+					break;
+				case 2:
+					view.zombies[temp].add(new doorZombie(temp));
+					break;
+				}
+			}	
+			}
+			else if(seconds<=150)
+			{
+				if(seconds%2==0)
+				{
+				int temp=(int)(Math.random()*5);
+				int zombie=(int)(Math.random()*3);
+				switch(zombie)
+				{
+				case 0:
+					view.zombies[temp].add(new coneZombie(temp));
+					break;
+				case 1:
+					view.zombies[temp].add(new footballZombie(temp));
+					break;
+				case 2:
+					view.zombies[temp].add(new doorZombie(temp));
+					break;
+				}
+			}
+			}
+			try 
+			{
+				Thread.sleep(1000);
+			} 
+			catch (InterruptedException e) {
+			e.printStackTrace();
+			}
+			view.panel.repaint();
+		}
+	}
+}

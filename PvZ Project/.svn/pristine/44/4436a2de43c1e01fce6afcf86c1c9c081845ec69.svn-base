@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.ImageIcon;
+
+public class Peashooter extends Plant
+{
+	private int attackDelay;
+
+	public Peashooter(int locationX, int locationY)
+	{
+	super(locationX, locationY);
+	image=new ImageIcon("graphics/peashooter.jpg");
+	damage=25;
+	health=60;
+	attackDelay=0;
+	}
+	public ArrayList<int[]> peaMoves()
+	{
+		return null;
+	}
+	protected void launchPeas()
+	{
+		attackDelay++;
+		if(attackDelay==25)
+		{
+			attackDelay=0;
+			peas.add(new Pea(this.x+40,this.y+10));
+		}
+	}
+	@Override
+	protected void movesPeas() 
+	{	
+		Iterator peaIte=peas.iterator();
+		while (peaIte.hasNext())
+		{
+			Pea p=(Pea)peaIte.next();
+			p.x+=15;
+			if(p.x>1000)
+				peaIte.remove();
+		}
+	}
+}

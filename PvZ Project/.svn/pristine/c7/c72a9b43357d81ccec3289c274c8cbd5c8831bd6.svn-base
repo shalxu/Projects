@@ -1,0 +1,28 @@
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+
+public class Subject 
+{
+	protected int x;
+	protected int y;
+	protected int health;
+	protected ImageIcon image;
+	protected Image getImage()
+	{
+		return image.getImage();
+	}
+	protected int getX()
+	{
+		return x;
+	}
+	protected int getY()
+	{
+		return y;
+	}
+	protected int getHealth()
+	{
+		return health;
+	}
+}

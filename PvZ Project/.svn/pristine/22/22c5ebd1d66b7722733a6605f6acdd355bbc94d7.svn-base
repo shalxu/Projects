@@ -1,0 +1,327 @@
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JLabel;
+
+
+public class PvZView {
+
+	private JFrame frmPlantVsZombies;
+	private JLabel sunLabel;
+	private ImageIcon background;
+	protected Plant[][] plants;
+	protected ArrayList<Zombie>[] zombies;
+	protected drawingPanel panel;
+	protected JPanel buyBoard;
+	private static Timer timer;
+	protected int sun;
+	private Thread timerThread;
+	private enum selectedplant
+	{
+		Peashooter,Repeater,Walnut,Sunflower;
+	}
+	private enum state
+	{
+		playing,dead;
+	}
+	private state status;
+	private selectedplant selectedPlant;
+	/**
+	 * leftmost point of grid
+	 */
+	protected static int gridX;
+	/**
+	 * uppermost point of grid
+	 */
+	protected static int gridY;
+	/**
+	 * width of each rectangle in the grid
+	 */
+	protected static int gridWidth;
+	/**
+	 * height of each rectangle in the grid
+	 */
+	protected static int gridHeight;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) 
+	{
+		PvZView window = new PvZView();
+		window.frmPlantVsZombies.setVisible(true);
+		window.timerThread=new Thread(timer);
+		window.timerThread.start();
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public PvZView() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() 
+	{
+		gridX=140;
+		gridY=65;
+		gridWidth=80;
+		gridHeight=85;
+		selectedPlant=selectedplant.Peashooter;
+		status=state.playing;
+		sun=50;
+		plants=new Plant[5][9];
+		zombies=(ArrayList<Zombie>[])new ArrayList[5];
+		for(int i=0;i<5;i++)
+		{
+			zombies[i]=new ArrayList<Zombie>();
+		}
+		timer=new Timer(this);
+		background=new ImageIcon("graphics/background.png");
+		frmPlantVsZombies = new JFrame();
+		frmPlantVsZombies.setTitle("Plant vs Zombies");
+		frmPlantVsZombies.setBounds(-10, 0, 1050, 550);
+		frmPlantVsZombies.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel=new drawingPanel();
+		frmPlantVsZombies.getContentPane().add(panel,BorderLayout.CENTER);
+		frmPlantVsZombies.getContentPane().setLayout(new BorderLayout(0, 0));
+		frmPlantVsZombies.getContentPane().add(panel, BorderLayout.CENTER);
+		buyBoard = new JPanel();
+		buyBoard.setLayout(new GridLayout(5,1));
+		sunLabel=new JLabel(new Integer(sun).toString());
+		sunLabel.setIcon(new ImageIcon("graphics/sun.png"));
+		buyBoard.add(sunLabel);
+		ImageIcon peashooterIcon = new ImageIcon("graphics/peashooterStatic.png");
+		JButton peashooterButton = new JButton(peashooterIcon);
+		peashooterButton.setText("50");
+		peashooterButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				selectedPlant = selectedPlant.Peashooter;
+			}
+		});
+		buyBoard.add(peashooterButton);
+		ImageIcon sunflowerIcon = new ImageIcon("graphics/sunFlowerStatic.jpg");
+		JButton sunflowerButton = new JButton(sunflowerIcon);
+		sunflowerButton.setText("25");
+		sunflowerButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				selectedPlant = selectedPlant.Sunflower;
+			}
+		});
+		buyBoard.add(sunflowerButton);
+		ImageIcon walnutIcon = new ImageIcon("graphics/walnutStatic.png");
+		JButton walnutButton = new JButton(walnutIcon);
+		walnutButton.setText("50");
+		walnutButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				selectedPlant = selectedPlant.Walnut;
+			}
+		});
+		buyBoard.add(walnutButton);
+		ImageIcon repeaterIcon = new ImageIcon("graphics/doublePeashooterStatic.png");
+		JButton repeaterButton = new JButton(repeaterIcon);
+		repeaterButton.setText("100");
+		repeaterButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				selectedPlant = selectedPlant.Repeater;
+			}
+		});
+		buyBoard.add(repeaterButton);
+		frmPlantVsZombies.getContentPane().add(buyBoard, BorderLayout.WEST);
+		panel.addMouseListener(new MouseListener()
+		{
+			public void mousePressed(MouseEvent e) {
+				if(e.getX()>gridX&&e.getX()<gridX+9*gridWidth&&
+						e.getY()>gridY&&e.getY()<gridY+5*gridHeight)
+				{
+					int tempX= (e.getX()-gridX)/gridWidth;
+					int tempY= (e.getY()-gridY)/gridHeight;
+					if(plants[tempY][tempX]==null)
+					{
+						switch(PvZView.this.selectedPlant)
+						{
+						case Peashooter:
+							if(sun>=50)
+							{
+								plants[tempY][tempX]=new Peashooter(tempY,tempX);
+								sun-=50;
+								sunLabel.setText(new Integer(sun).toString());
+								panel.repaint();
+							}
+							break;
+						case Repeater:
+							if(sun>=100)
+							{
+							plants[tempY][tempX]=new doublePeashooter(tempY,tempX);
+							sun-=100;
+							sunLabel.setText(new Integer(sun).toString());
+							panel.repaint();
+							}
+							break;
+						case Sunflower:
+							if(sun>=25)
+							{
+							plants[tempY][tempX]=new sunflower(tempY,tempX);
+							sun-=25;
+							sunLabel.setText(new Integer(sun).toString());
+							panel.repaint();
+							}
+							break;
+						case Walnut:
+							if(sun>=50)
+							{
+							plants[tempY][tempX]=new Walnut(tempY,tempX);
+							sun-=50;
+							sunLabel.setText(new Integer(sun).toString());
+							panel.repaint();
+							}
+							break;
+						default:
+							break;
+						}
+					}
+				}
+			}
+			public void mouseEntered(MouseEvent arg0) {
+			}
+			public void mouseExited(MouseEvent arg0) {
+			}
+			public void mouseClicked(MouseEvent arg0) {
+			}
+			public void mouseReleased(MouseEvent arg0) {
+			}
+		});
+	}
+	protected class drawingPanel extends JPanel
+	{
+		public void paintComponent(Graphics g)
+		{
+			super.paintComponent(g);
+			if(status==state.playing)
+			{
+				g.drawImage(background.getImage(),-100,0,1000,550,this);
+				
+				loop:
+				{
+					for(int i=0;i<5;i++)
+					{
+						for(Plant p:plants[i])
+						{
+							if(p!=null)
+							{
+								g.drawImage(p.getImage(),p.getX(),p.getY(),gridWidth,gridHeight,this);
+								if(p instanceof Peashooter||p instanceof doublePeashooter)
+								{
+								if(zombies[i].size()>0)
+									p.launchPeas();
+								p.movesPeas();							
+								Iterator peaIte=p.peas.iterator();
+								while (peaIte.hasNext())
+								{
+									Plant.Pea pea=(Plant.Pea)peaIte.next();
+									g.drawImage(pea.getImage(),pea.getX(),pea.getY(),this);
+									for(Zombie z:zombies[i])
+									{
+										if(pea.getX()>=z.getX())
+										{
+											p.attack((Zombie)z,p.getDamage());
+											peaIte.remove();
+										}
+									}
+								}
+								}
+								else if(p instanceof sunflower)
+								{
+									int temp=((sunflower)p).moveSun();
+									if(((sunflower)p).sun!=null)
+									{
+										g.drawImage(new ImageIcon("graphics/sun.png").getImage(),((sunflower)p).sun.getX(),((sunflower)p).sun.getY(),this);
+									}
+									if(temp==1)
+									{
+										PvZView.this.sun+=25;
+										sunLabel.setText(new Integer(sun).toString());
+										sunLabel.repaint();
+									}
+								}
+							}
+						}
+						Iterator zombieIte=zombies[i].iterator();
+						while(zombieIte.hasNext())
+						{
+							Zombie z=(Zombie)zombieIte.next();
+							g.drawImage(z.getImage(),z.getX(),z.getY(),this);
+							for(int p=8;p>=0;p--)
+							{
+								if(plants[i][p]!=null&&z.getX()<=plants[i][p].getX())
+								{
+									z.eat(plants[i][p]);
+									z.suspend();
+									if(plants[i][p].getHealth()<=0)
+										plants[i][p]=null;
+									break;
+								}
+							}
+							z.move();
+							if(z.getHealth()<=0)
+							{
+								zombieIte.remove();
+							}
+							if(z.getX()<gridX)
+							{
+								PvZView.this.die();
+								status=state.dead;
+								break loop;
+							}
+						}
+					}
+				}
+				if(timer.getSeconds()==200||timer.getSeconds()==201)
+				{
+					g.setFont(new Font("Papyrus", Font.BOLD, 27));
+					g.setColor(Color.WHITE);
+					g.drawString("A HUGE WAVE OF ZOMBIES IS COMING!",100,200);
+				}
+			}
+			else
+			{
+				g.drawImage(new ImageIcon("graphics/die.jpg").getImage(),0,0,1000,600,this);
+			}
+		}
+	}	
+	protected void die()
+	{
+		for(int i=0;i<5;i++)
+		{
+			Iterator zombiesIte=zombies[i].iterator();
+			while(zombiesIte.hasNext())
+			{
+				zombiesIte.next();
+				zombiesIte.remove();
+			}
+			for(int m=0;m<9;m++)
+			{
+				plants[i][m]=null;
+			}
+		}
+		timerThread.stop();
+	}
+}

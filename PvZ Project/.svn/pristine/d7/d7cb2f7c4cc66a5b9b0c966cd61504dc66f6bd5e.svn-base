@@ -1,0 +1,28 @@
+import javax.swing.ImageIcon;
+
+
+public abstract class Zombie extends Subject {
+	protected int speed;
+	protected int damage;
+	protected Zombie(int lane)
+	{
+		y=PvZView.gridY+(lane+1)*PvZView.gridHeight-144;
+		x=1000;
+	}
+	protected void move()
+	{
+		this.x-=this.speed;
+	}
+	protected void suspend()
+	{
+		speed=0;
+	}
+	protected void eat(Plant p)
+	{
+		p.eaten(damage);
+	}
+	protected void attacked(int damage)
+	{
+		health-=damage;
+	}
+}
