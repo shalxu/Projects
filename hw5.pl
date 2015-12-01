@@ -1,5 +1,5 @@
 /*Shal Xu hw5.1-5*/
-
+/*Prolog program for processing sets,including Union, Complement, Difference, Equal and other functions*/
 
 isMember(X,[X|_]). /*test if the element on the left is contained in the list on the right*/
 isMember(X,[_|Y]) :- isMember(X,Y).
