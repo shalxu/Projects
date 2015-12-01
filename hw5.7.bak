@@ -1,11 +1,6 @@
 #lang racket
 
 ;;;Shal Xu HW5.7
-;;;Given two lists of integers, called S and T,
-;;;and the location of the closest match between S and a sublist of T
-;;;where the distance between two lists is the sum of absolute values of the differences between each corresponding integer in the lists.
-;;;For example, the distance between the lists 1 2 3 and 0 2 4 would be j1 0j + j2 2j + j3 4j = 2.
-;;;The program should take two lists as input and report the location (using 0 based indexing) of the best matching sublist and the distance from the list S.
 
 ;;;find the smallest element in a list
 (define (minimum list)

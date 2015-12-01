@@ -3,6 +3,11 @@
 ;;;Shal Xu Hw5.8
 ;;;syntax: (process StringToBeProcessed)
 
+;;;parser and lexer for processing strings of operations of integer sets.
+;;;e.g.C {1,2,3,4,7,8} would evaluate to {0,5,6,9}
+;;;U {1,2,3g f7,8,9} would evaluate to {1,2,3,7,8,9}
+;;;I U {1,2,3g f7,8,9} C {1,2,3,4,7,8}would evaluate to {9}
+
 (require parser-tools/lex
          parser-tools/yacc
          data/integer-set)
