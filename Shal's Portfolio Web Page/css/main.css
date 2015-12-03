@@ -5,7 +5,7 @@
 }
 
 
-.page{
+body{
 	max-width:800px;
 	margin-left: auto;
 	margin-right: auto;
@@ -24,7 +24,7 @@ h1{
 	border-right: none;
 	border-bottom: solid;
 	border-top:none;
-	border-color: DarkOrange;
+	border-color:#6699FF;
 	border-width: thin;
 	padding-bottom: 3%;
 	padding-left: 0%;
@@ -39,6 +39,7 @@ h1{
 	font-weight: 200;
 }
 h2{
+	background-color: #FFFFCC;
 	font-family: Corbel;
 	font-size: 20px;
 	color:gray;
@@ -69,6 +70,7 @@ h4{
 	padding-right: 5%;
 }
 .skills{
+	background: white;
 	color: black;
 	padding-top: 0%;
 	padding-bottom: 0%;
