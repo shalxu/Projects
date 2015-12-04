@@ -86,6 +86,26 @@ h4{
 	border-width: thin;
 	font-size: 12px;
 }
+.modal-header{
+	font-family: Corbel;
+	font-size: 20px;
+	text-align: center;
+}
+.modal-body{
+	font-family: Corbel;
+	font-size: 15px;
+}
+.img-responsive{
+	max-height: 500px;
+}
+.modal-footer{
+	font-family: Corbel;
+	text-align: right;
+	font-size: 20px;
+}
+.btn1{
+	background-color:#6699FF;
+}
 .col-2 img{
 	width: 20%;
 }

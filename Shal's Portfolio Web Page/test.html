@@ -1,7 +1,10 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<title>Shal's Portfolio</title>
+	<link rel="icon" type="image/png" href="images/Baby_Girl-16.png">
 </head>
 <body>
 	<div class="page">
@@ -14,8 +17,9 @@
 				<div class= "subtext">
 					Self-teaching Web Developer
 				</div>
-			</h1>
-			<h2 class="row">
+			</div>
+		</h1>
+		<h2 class="row">
 			Skills
 		</h2>
 		<h2 class="skills">
@@ -24,9 +28,9 @@
 			<P>Assembly Language (MIPS), Computer Organization</P>
 			<P>Functional Languages (SML, Prolog, Racket)</P>
 			<P>Implementation of Common Data Structures and Algorithms<P>
-			<P>Software Tools (Vi, JUnit, Cobertura, Ant, Javadoc, Google Test, gcov, GCC) </P>
-			<P>Web Development(HTML, CSS)</P>
-		</h2>
+				<P>Software Tools (Vi, JUnit, Cobertura, Ant, Javadoc, Google Test, gcov, GCC) </P>
+				<P>Web Development(HTML, CSS)</P>
+			</h2>
 			<h2 class="row">
 				Featured Work
 			</h2>
@@ -48,14 +52,12 @@
 					</h4>
 				</div>
 				<div class="col-6">
-					<a href="https://github.com/shalxu/Projects/tree/master/skecth_34_maplestory">
-						<img src="images/maplestory.jpg">
-					</a>
+					<img class="img-responsive" src="images/maplestory.jpg" data-toggle="modal" data-target="#project1">
 					<h3 class="text">
 						Mock Maplestory Game
 					</h3>
-						<h3 class="text">(Java/Processing)
-						</h3>
+					<h3 class="text">(Java/Processing)
+					</h3>
 					<h4>
 						<a href="https://github.com/shalxu/Projects/tree/master/skecth_34_maplestory">
 							https://github.com/shalxu/Projects/tree/master/skecth_34_maplestory
@@ -95,24 +97,43 @@
 					</h4>
 				</div>
 			</div>
-					<h2 class="row">
-						Other Projects
-					</h2>
-					<h3>
-						<a href= "https://github.com/shalxu/Projects/tree/master/SlidingPuzzleGame%20Shal%26Hanna/Homework_2PardeeXu"><p>Parser/Lexer processing integer set calculations (Functional Language)</p></a>
-						<a href="https://github.com/shalxu/Projects/tree/master/dataManagement"><p>Stack/Heap Manager (Java)</p></a>
-						<a href="https://github.com/shalxu/Projects/tree/master/LotoAnalysis"><p>Winning Lottery Number Analysis (Java GUI)</p></a>
-						<a href="https://github.com/shalxu/Projects/blob/master/hw5.8.rkt"><p>Sliding Puzzle Game (C++)</p></a>
-					</h3>
-				</div>
-			<h4 class="footer">
-				<p>Contact:</p>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;Tel:720-216-3346</p>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;2424 S. York St 104, Denver, CO</p>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="shalxu@qq.com">shalxu@qq.com</p></a>
- 				<p>&nbsp;&nbsp;&nbsp;&nbsp;Github://shalxu. LinkedIn: Shal Xu</p>
-
-			</h4>
+			<h2 class="row">
+				Other Projects
+			</h2>
+			<h3>
+				<a href= "https://github.com/shalxu/Projects/tree/master/SlidingPuzzleGame%20Shal%26Hanna/Homework_2PardeeXu"><p>Parser/Lexer processing integer set calculations (Functional Language)</p></a>
+				<a href="https://github.com/shalxu/Projects/tree/master/dataManagement"><p>Stack/Heap Manager (Java)</p></a>
+				<a href="https://github.com/shalxu/Projects/tree/master/LotoAnalysis"><p>Winning Lottery Number Analysis (Java GUI)</p></a>
+				<a href="https://github.com/shalxu/Projects/blob/master/hw5.8.rkt"><p>Sliding Puzzle Game (C++)</p></a>
+			</h3>
 		</div>
-	</body>
-	</html>
+		<h4 class="footer">
+			<p>Contact:</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;Tel:720-216-3346</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;2424 S. York St 104, Denver, CO</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="shalxu@qq.com">shalxu@qq.com</p></a>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;Github://shalxu. LinkedIn: Shal Xu</p>
+
+		</h4>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-title" id="myModalLabel">Mock Plant vs Zombies Game</div>
+				</div>
+				<div class="modal-body">
+					<img class="img-responsive row" src="images/maplestory.jpg">
+					 Imitating the original Maplestory Game as from Nexon, using original graphics and movement schemes.
+					 The main character can move left and right on the screen, attacking monsters using magic bolts (Space Bar).
+					 The monsters automatically attacks the character when encoutering.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn1" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
