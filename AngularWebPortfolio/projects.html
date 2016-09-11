@@ -1,0 +1,101 @@
+<div class="row" style="width:auto;">
+	<div class="box col-md-6 centered" style="height:100%; border:1px;">
+			<img title="Click ME for more details!"ng-click="updateModal(4)" style="border-radius: 25px; padding:10px; border:solid 3px #ffdddd;cursor:pointer;max-width:100%" ng-src="{{data[4]['image']}}" data-toggle="modal" data-target="#myModal">
+		<h3>
+			{{data[4]["name"]}}
+		</h3>
+		<h4 >
+			{{data[4]["language"]}}
+		</h4>
+		<a style="word-wrap:break-word;" ng-href="data[0]['link']">
+				{{data[4]["link"]}}
+		</a>
+	</div>
+	<div class="box col-md-6 centered" style="height:100%; border:1px;">
+			<img title="Click ME for more details!"ng-click="updateModal(5)" style="border-radius: 25px; padding:10px; border:solid 3px #ffdddd;cursor:pointer;max-width:100%" ng-src="{{data[5]['image']}}" data-toggle="modal" data-target="#myModal">
+		<h3>
+			{{data[5]["name"]}}
+		</h3>
+		<h4 >
+			{{data[5]["language"]}}
+		</h4>
+		<a style="word-wrap:break-word;" ng-href="data[0]['link']">
+			{{data[5]["link"]}}
+		</a>
+	</div>
+	
+</div>
+<div class="row">
+	<div class="box col-md-6 centered" style="height:100%; border:1px;">
+			<img title="Click ME for more details!"ng-click="updateModal(0)" style="border-radius: 25px; padding:10px; border:solid 3px #ffdddd;cursor:pointer;max-width:100%" ng-src="{{data[0]['image']}}" data-toggle="modal" data-target="#myModal">
+		<h3>
+			{{data[0]["name"]}}
+		</h3>
+		<h4 >
+			{{data[0]["language"]}}
+		</h4>
+		<a style="word-wrap:break-word;" ng-href="data[0]['link']">
+				{{data[0]["link"]}}
+		</a>
+	</div>
+	<div class="box col-md-6 centered" style="height:100%; border:1px;">
+			<img title="Click ME for more details!"ng-click="updateModal(2)" style="border-radius: 25px; padding:10px; border:solid 3px #ffdddd;cursor:pointer;max-width:100%" ng-src="{{data[2]['image']}}" data-toggle="modal" data-target="#myModal">
+		<h3>
+			{{data[2]["name"]}}
+		</h3>
+		<h4 >
+			{{data[2]["language"]}}
+		</h4>
+		<a style="word-wrap:break-word;" ng-href="data[0]['link']">
+				{{data[2]["link"]}}
+		</a>
+	</div>
+</div>
+	<div class="row">
+	<div class="box col-md-6 centered" style="height:100%; border:1px;">
+			<img title="Click ME for more details!"ng-click="updateModal(1)" style="border-radius: 25px; padding:10px; border:solid 3px #ffdddd;cursor:pointer;max-width:100%" ng-src="{{data[1]['image']}}" data-toggle="modal" data-target="#myModal">
+		<h3>
+			{{data[1]["name"]}}
+		</h3>
+		<h4 >
+			{{data[1]["language"]}}
+		</h4>
+		<a style="word-wrap:break-word;" ng-href="data[0]['link']">
+				{{data[1]["link"]}}
+		</a>
+	</div>
+	<div class="box col-md-6 centered" style="height:100%; border:1px;">
+			<img title="Click ME for more details!"ng-click="updateModal(3)" style="border-radius: 25px; padding:10px; border:solid 3px #ffdddd;cursor:pointer;max-width:100%" ng-src="{{data[3]['image']}}" data-toggle="modal" data-target="#myModal">
+		<h3>
+			{{data[3]["name"]}}
+		</h3>
+		<h4 >
+			{{data[3]["language"]}}
+		</h4>
+		<a style="word-wrap:break-word;" ng-href="data[0]['link']">
+				{{data[3]["link"]}}
+		</a>
+	</div>
+</div>
+
+	 <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 id="head" class="modal-title" style="font-weight:bold">Modal Header</h4>
+        </div>
+        <div class="modal-body" style=" vertical-align:middle;text-align:center">
+          <img style="max-width:100%" id="image"></img>
+          <div id="description" style="margin:20px;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-custom" data-dismiss="modal">Close<span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
