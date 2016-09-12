@@ -37,7 +37,7 @@ app.controller('MainController', function ($animate,$scope) {
       image: "images/shal.JPG",
       text: "Shal Xu",
       button:"About Me",
-      link:"/#aboutMe",
+      link:"#aboutMe",
       index:0
     },
     {
@@ -51,7 +51,7 @@ app.controller('MainController', function ($animate,$scope) {
     	image: "images/code.jpg",
       text: "A Visual Programmer",
       button:"Take a Look at My Other Projects Too!",
-      link:"/#projects",
+      link:"#projects",
       index:2
     }];
 

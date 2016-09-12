@@ -80,10 +80,6 @@ a {
     color: #ff8080;/*pink*/
 }
 
-.btn-custom>a{
-    color:white;
-}
-
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color:white;
     background-color: #ffb3b3;/*light pink*/
