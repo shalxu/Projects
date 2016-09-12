@@ -26,7 +26,8 @@ Highcharts.chart('container', {
         yAxis: {
             title: {
                 text: 'Grades converted to GPA'
-            }
+            },
+            min:1
         },
         legend: {
             layout: 'vertical',
