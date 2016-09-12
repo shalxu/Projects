@@ -80,6 +80,15 @@ a {
     color: #ff8080;/*pink*/
 }
 
+.buttonLink{
+    color:white;
+}
+.buttonLink:hover{
+    color:black;
+}
+
+
+
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color:white;
     background-color: #ffb3b3;/*light pink*/
