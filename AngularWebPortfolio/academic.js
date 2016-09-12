@@ -27,7 +27,8 @@ Highcharts.chart('container', {
             title: {
                 text: 'Grades converted to GPA'
             },
-            min:1
+            min:1,
+            max:4
         },
         legend: {
             layout: 'vertical',
