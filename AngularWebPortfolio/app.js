@@ -34,7 +34,7 @@ app.controller('MainController', function ($animate,$scope) {
 	 $animate.enabled(true); 
 
    $scope.slides=[{
-      image: "images/shal.jpg",
+      image: "images/shal.JPG",
       text: "Shal Xu",
       button:"About Me",
       link:"/#aboutMe",
