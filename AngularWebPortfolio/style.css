@@ -78,6 +78,7 @@ body{
 
 a {
     color: #ff8080;/*pink*/
+    cursor:pointer;
 }
 
 .buttonLink{
