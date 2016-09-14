@@ -28,7 +28,7 @@ app.controller('ProjectsController', function ($animate,$scope) {
 	"language":"HTML/CSS/Javascript/PHP/XAMPP",
 	"image":"images/yoga.jpg",
 	"description":"This is a Single-Page Web Application that quizzes students about yoga positions. There are two modes (multiple choice and right/wrong). Each student is shown a image, and prompted to choose among buttons of choices. User information and previous scores are stored locally using cookies. Questions are randomly generated based on existing question-answer pairs" ,
-	"link":"https://github.com/shalxu/Projects/tree/master/EvilHangPerson"
+	"link":"https://github.com/shalxu/Projects/tree/master/yoga.php"
 	},
 	{"name":"Shop Love + Light",
 	"language":"Shopify",
