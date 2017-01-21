@@ -1,6 +1,7 @@
 This is my official, prettiest portfolio, coded mainly using Angularjs and Bootstrap!
-You can check out the actual running site, hosted on RawGit:
-rawgit.com/shalxu/Projects/master/AngularWebPortfolio/index.html
+
+! You can check out the actual running site, hosted on RawGit:
+! http://rawgit.com/shalxu/Projects/master/AngularWebPortfolio/index.html
 
 Shal herself did all the color design, web layout and coding.
 Most data are stored in JSON format.
